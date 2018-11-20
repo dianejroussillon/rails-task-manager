@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>My Tasks</h1>
+    <ul><% @tasks.each do |task| %>
+        <% if task.completed == true %>
+        <li><i class="far fa-check-square"></i><%= link_to task.title, task_path(task) %><%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe ,url_for(action: :destroy,id: task.id),method: :delete, data: {confirm: "Are you sure?"} %></i></li>
+        <% else %>
+        <li><i class="fal fa-check-square"></i></i><%= link_to task.title, task_path(task) %><%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe ,url_for(action: :destroy,id: task.id),method: :delete, data: {confirm: "Are you sure?"} %></i></li>
+        <% end %>
+      <% end %>
+    </ul>
+
+<%= link_to 'add a new task', new_task_path, class: 'btn btn-primary' %>
+</div>
